@@ -23,3 +23,40 @@
 # Note: `random.randint(a,b)` returns a random integer in range `[a, b]`, including both end points.
 
 print("Try this out")
+
+from random import randint
+random_num = randint(1,100)
+#print(random_num)
+player_guess = int(input("Enter guess from 1 to 100: "))
+previous_guess = 0
+turn = 1
+
+while player_guess != random_num:
+    if player_guess <1 or player_guess > 100:
+        print('OUT OF BOUNDS')
+    if turn == 1:
+        if abs(player_guess - random_num) == 10:
+            print("WARM!")
+        else:
+            print("COLD!")
+    if turn > 1:
+        if abs(previous_guess - random_num) > abs (player_guess - random_num):
+            print("WARMER!")
+        else:
+            print("COLDER!")
+    
+    previous_guess = player_guess
+    player_guess = int(input("new guess: "))
+    turn += 1
+    
+print('You have guessed correctly', random_num, '. it took you', turn, ' guess(es)')
+
+
+
+
+
+# That's it! You've just programmed your first game!
+# 
+# In the next section we'll learn how to turn some of these repetitive actions into *functions* that can be called whenever we need them.
+
+# ### Good Job!
